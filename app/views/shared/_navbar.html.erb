@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <%= link_to "Twitter", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "About", about_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if Current.user %>
+          <div class="d-flex align-items-center gap-2">
+            <%= Current.user.email %>
+            <%= button_to "Log out", logout_path, method: :delete, class: "btn btn-outline-warning" %>
+            <%= link_to "Change password",edit_password_path, class: "btn btn-outline-warning" %>
+          </div>
+        <% else %>
+          <div class="d-flex align-items-center gap-2">
+            <%= link_to "Log in", sign_in_path, class: "btn btn-outline-info" %>
+            <%= link_to "Sign up", sign_up_path, class: "btn btn-outline-info" %>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
